@@ -23,6 +23,15 @@ sudo mkswap /dev/vdb3
 sudo swapon /dev/vdb3
 blkid /dev/vd3 - вытаскиваем UUID и добавляем строку в /etc/fstab
 5) Добавить еще два диска и создать на нем несколько логических томов (LVM).
+pvcreate /dev/vdb
+pvcreate /dev/vdc
+
+vgcreate vg1 /dev/vdb /dev/vdc
+lvcreate -n lv1 -L 30G vg1
+lvcreate -n lv2 -L 15G vg1
+lvcreate -n lv3 -L 5G vg1
 6) Попробовать переносить тома с одного жесткого диска на другой без остановки ОС.
+man pvmove
+pvmove -n /dev/vg1/lv3 /dev/vdb /dev/vdc
 7) Определить точную версию ядра ОС.
 uname -a
