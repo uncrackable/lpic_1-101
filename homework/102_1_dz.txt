@@ -31,6 +31,7 @@ lvcreate -n lv1 -L 30G vg1
 lvcreate -n lv2 -L 15G vg1
 lvcreate -n lv3 -L 5G vg1
 6) Попробовать переносить тома с одного жесткого диска на другой без остановки ОС.
+https://www.linux.org.ru/forum/admin/12397914
 man pvmove
 pvmove -n /dev/vg1/lv3 /dev/vdb /dev/vdc
 7) Определить точную версию ядра ОС.
